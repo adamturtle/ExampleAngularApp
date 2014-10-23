@@ -28,3 +28,61 @@
   content: "";
   padding: 0;
 }
+
+body {
+  font-family: Arial;
+}
+
+a {
+  color: #888;
+}
+
+#main,
+table {
+  margin: 0 auto;
+  width: 600px;
+}
+
+table td {
+  padding: 4px;
+  line-height: 1.42857143;
+  vertical-align: middle;
+  border-top: 1px solid #ddd;
+}
+
+table th {
+  padding: 10px 4px;
+}
+
+table td img {
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+table>tbody>tr:nth-child(odd)>td,
+table>tbody>tr:nth-child(odd)>th {
+  background-color: #f9f9f9;
+}
+
+input {
+  margin: 0 auto;
+  padding: .5em 1em;
+  display: block;
+  font-size: 16px;
+  color: #444;
+}
+
+.avatar {
+  float: left;
+  margin: 10px 40px 10px 0;
+}
+
+.driver-status {
+  margin-top: 10px;
+  float: left;
+}
+
+#back {
+  margin: 1em 0;
+  display: block;
+}
