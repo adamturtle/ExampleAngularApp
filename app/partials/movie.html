@@ -1,0 +1,59 @@
+<section id="main">
+  <a href="./#/nowplaying" id="back">&larr; Back to movies list</a>
+
+  <div class="movie" ng-show="movie">
+
+    <div class="movie-info cf">
+      <div class="movie-poster-container">
+        <img ng-show="movie.poster_path" src="{{ poster_path + movie.poster_path }}" />
+        <img ng-show="!movie.poster_path" src="img/default-poster.png" /><br/>
+      </div>
+
+      <div class="movie-details">
+        <h2>{{movie.title}}</h2>
+        <p>Released: {{ movie.release_date }}</p>
+        <p>Director: {{ movie.credits.crew | job:'director' }}</p>
+        <p>Genres: <span ng-repeat="genre in movie.genres">{{ genre.name }} </span>
+
+      </div>
+    </div><!-- /.movie-info -->
+
+    <h2>Cast</h2>
+    <div class="main-content">
+      <table>
+        <tbody>
+          <tr>
+            <th>
+              <a ng-click="orderByField='name'; reverseSort = !reverseSort">
+                Name
+                <span ng-show="orderByField == 'name'">
+                  <span ng-show="!reverseSort">&#9650;</span>
+                  <span ng-show="reverseSort">&#9660;</span>
+                </span>
+              </a>
+            </th>
+            <th>
+              <a ng-click="orderByField='character'; reverseSort = !reverseSort">
+                Character
+                <span ng-show="orderByField == 'character'">
+                  <span ng-show="!reverseSort">&#9650;</span>
+                  <span ng-show="reverseSort">&#9660;</span>
+                </span>
+              </a>
+            </th>
+          </tr>
+
+
+          <tr ng-repeat="cast_member in movie.credits.cast | orderBy:orderByField:reverseSort">
+            <td>{{cast_member.name}}</td>
+            <td class="character">{{cast_member.character}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    </div><!-- end .driver -->
+    <div ng-show="!movie">
+      <p class="error">Sorry, we couldn't find that movie.</p>
+    </div>
+  </section>

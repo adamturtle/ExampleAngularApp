@@ -65,15 +65,40 @@ input {
   border: 1px solid #ccc;
 }
 
-.avatar {
-  float: left;
-  margin: 10px 40px 10px 0;
+.movie-poster {
+  max-height: 50px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }
 
-.driver-status {
-  margin-top: 10px;
+.movie-info {
+  background: #eee;
+  padding: 20px;
+}
+
+.movie-poster-container {
+  float: left;
+  margin-right: 20px;
+}
+
+.movie-details {
   float: left;
 }
+
+.movie-details h2 {
+  margin-top: 0;
+}
+
+.character {
+  color: #888;
+}
+
+
+
+
+
+
 
 #back {
   margin: 1em 0;

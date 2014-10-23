@@ -1,10 +1,13 @@
-'use strict';
-
 /* Filters */
-
-angular.module('myApp.filters', []).
-  filter('interpolate', ['version', function(version) {
-    return function(text) {
-      return String(text).replace(/\%VERSION\%/mg, version);
-    };
-  }]);
+app.filter('job',function(){
+   // Return object containing string
+   return function(input, job){
+      var ret = null;
+      angular.forEach(input, function(obj){
+         if ( obj.job.toLowerCase() == job.toLowerCase() ){
+            ret = obj.name;
+         }
+      })
+      return ret;
+   }
+});

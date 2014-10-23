@@ -1,17 +1,17 @@
-var app = angular.module('F1FeederApp', ['ngRoute']);
+var app = angular.module('nowPlayingApp', ['ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider) {
    $routeProvider.
 
-      when("/drivers", {
-         templateUrl: "partials/drivers.html",
-         controller: "driversController"}
+      when("/nowplaying", {
+         templateUrl: "partials/nowplaying.html",
+         controller: "nowPlayingController"}
       )
-      .when("/drivers/:id", {
-         templateUrl: "partials/driver.html",
-         controller: "driverController"
+      .when("/nowplaying/:id", {
+         templateUrl: "partials/movie.html",
+         controller: "movieController"
       })
       .otherwise({
-         redirectTo: '/drivers'
+         redirectTo: '/nowplaying'
       });
 }]);

@@ -1,0 +1,47 @@
+<h1>Now Playing</h1>
+
+<input type="text" ng-model="titleFilter" placeholder="Search..."/>
+
+<table>
+<thead>
+  <tr>
+    <th>Poster</th>
+    <th>
+      <a ng-click="orderByField='title'; reverseSort = !reverseSort">
+        Title
+        <span ng-show="orderByField == 'title'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='vote_average'; reverseSort = !reverseSort">
+        Rating
+        <span ng-show="orderByField == 'vote_average'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+  </tr>
+</thead>
+<tbody>
+  <tr ng-repeat="movie in filtered = (movies | orderBy: orderByField: reverseSort | filter: titleFilter)">
+    <td>
+      <img ng-show="movie.poster_path" class="movie-poster" src="{{poster_path + movie.poster_path}}">
+      <img ng-show="!movie.poster_path" class="movie-poster" src="img/default-poster.png">
+    </td>
+    <td>
+      <a href="#/nowplaying/{{movie.id}}">
+        {{movie.title}}
+    </a>
+    </td>
+    <td align="center">{{movie.vote_average}}</td>
+  </tr>
+
+  <tr ng-show="filtered.length == 0">
+    <td colspan="4" align="center">Sorry, no results</td>
+  </tr>
+</tbody>
+</table>

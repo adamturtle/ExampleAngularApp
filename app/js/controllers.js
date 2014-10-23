@@ -1,51 +1,32 @@
 /* Drivers controller */
-app.controller('driversController', function($scope, ergastAPIservice) {
-   $scope.nameFilter   = null;
+app.controller('nowPlayingController', function($scope,tmdbProvider) {
+   $scope.titleFilter   = null;
    $scope.driversList  = [];
-   $scope.orderByField = 'position';
+   $scope.orderByField = 'rating';
    $scope.reverseSort  = false;
 
-   $scope.searchFilter = function (driver) {
-      var re = new RegExp($scope.nameFilter, 'i');
-      return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
-   };
-
-   ergastAPIservice.getDrivers().success(function (response) {
-      //Digging into the response to get the relevant data
-      var res = response.MRData.StandingsTable.StandingsLists[0].DriverStandings;
-
-      // Convert strings to numbers
-      angular.forEach(res, function (detail) {
-         detail.points = parseFloat(detail.points);
-         detail.position = parseFloat(detail.position);
-      });
-
-      $scope.driversList = res;
+   tmdbProvider.getReleases().success(function(response){
+      $scope.movies = response.results;
    });
+
+   tmdbProvider.getConfig().success(function(response){
+      $scope.poster_path = response.images.base_url + 'w45';
+   });
+
 });
 
 /* Driver controller */
-app.controller('driverController', function($scope, $routeParams, ergastAPIservice) {
+app.controller('movieController', function($scope, $routeParams, tmdbProvider) {
    $scope.id           = $routeParams.id;
-   $scope.races        = [];
-   $scope.driver       = null;
-   $scope.orderByField = 'round';
+   $scope.movie        = null;
+   $scope.orderByField = 'name';
    $scope.reverseSort  = false;
 
-   ergastAPIservice.getDriverDetails($scope.id).success(function (response) {
-      $scope.driver = response.MRData.StandingsTable.StandingsLists[0].DriverStandings[0];
+   tmdbProvider.getMovie($scope.id).success(function(response){
+      $scope.movie = response;
    });
 
-   ergastAPIservice.getDriverRaces($scope.id).success(function (response) {
-      var res = response.MRData.RaceTable.Races;
-
-      // Convert strings to numbers
-      angular.forEach(res, function (detail) {
-         detail.Results[0].grid = parseFloat(detail.Results[0].grid);
-         detail.Results[0].position = parseFloat(detail.Results[0].position);
-         detail.round = parseFloat(detail.round);
-      });
-
-      $scope.races = res;
+   tmdbProvider.getConfig().success(function(response){
+      $scope.poster_path = response.images.base_url + 'w92';
    });
 });

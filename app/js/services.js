@@ -1,29 +1,47 @@
-app.factory('ergastAPIservice', function($http) {
+app.factory('tmdbProvider',function($http){
 
-    var ergastAPI = {};
+    var tmdbAPI     = {};
+    tmdbAPI.urlBase = 'https://api.themoviedb.org/3';
+    tmdbAPI.apiKey  = '815ed3e88291031d0bbf7e4880ea0c89';
 
-    urlBase = 'http://ergast.com/api/f1/2013';
-
-    ergastAPI.getDrivers = function() {
+    // Get now playing
+    tmdbAPI.getReleases = function(){
       return $http({
         method: 'JSONP',
-        url: urlBase + '/driverStandings.json?callback=JSON_CALLBACK'
+        url: this.urlBase + '/movie/now_playing',
+        params: {
+          'api_key': this.apiKey,
+          'language ': 'en',
+          'callback': 'JSON_CALLBACK'
+        }
       });
-    }
+    };
 
-    ergastAPI.getDriverDetails = function(id) {
+    // Get single movie
+    tmdbAPI.getMovie = function(id){
       return $http({
         method: 'JSONP',
-        url: urlBase + '/drivers/'+ id +'/driverStandings.json?callback=JSON_CALLBACK'
+        url: this.urlBase + '/movie/' + id,
+        params: {
+          'api_key': this.apiKey,
+          'append_to_response': 'credits',
+          'callback': 'JSON_CALLBACK'
+        }
       });
-    }
+    };
 
-    ergastAPI.getDriverRaces = function(id) {
+
+    // Get configuration
+    tmdbAPI.getConfig = function(){
       return $http({
         method: 'JSONP',
-        url: urlBase + '/drivers/'+ id +'/results.json?callback=JSON_CALLBACK'
+        url: this.urlBase + '/configuration',
+        params: {
+          'api_key': this.apiKey,
+          'callback': 'JSON_CALLBACK'
+        }
       });
-    }
+    };
 
-    return ergastAPI;
+    return tmdbAPI;
 });
