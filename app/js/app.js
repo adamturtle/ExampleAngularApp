@@ -1,9 +1,6 @@
-angular.module('F1FeederApp', [
-  'F1FeederApp.services',
-  'F1FeederApp.controllers',
-  'ngRoute'
-]).
-config(['$routeProvider', function($routeProvider) {
+var app = angular.module('F1FeederApp', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
    $routeProvider.
 
       when("/drivers", {

@@ -1,5 +1,4 @@
-angular.module('F1FeederApp.services', [])
-  .factory('ergastAPIservice', function($http) {
+app.factory('ergastAPIservice', function($http) {
 
     var ergastAPI = {};
 
@@ -27,4 +26,4 @@ angular.module('F1FeederApp.services', [])
     }
 
     return ergastAPI;
-  });
+});

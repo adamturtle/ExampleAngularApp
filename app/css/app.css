@@ -1,40 +1,21 @@
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
-}
 
-.menu:before {
-  content: "[";
-}
 
-.menu:after {
-  content: "]";
-}
-
-.menu > li {
-  display: inline;
-}
-
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
-}
-
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
-}
-
+html,
 body {
   font-family: Arial;
+  margin: 0;
+  padding: 0;
 }
 
 a {
   color: #888;
+}
+
+h1 {
+  text-align: center;
+  font-size: 18px;
 }
 
 #main,
@@ -52,6 +33,16 @@ table td {
 
 table th {
   padding: 10px 4px;
+  text-transform: uppercase;
+  font-size: 13px;
+}
+
+table th a {
+  cursor: pointer;
+}
+
+table th span {
+  font-size: 9px;
 }
 
 table td img {
@@ -65,11 +56,13 @@ table>tbody>tr:nth-child(odd)>th {
 }
 
 input {
-  margin: 0 auto;
+  margin: 30px auto;
   padding: .5em 1em;
   display: block;
   font-size: 16px;
   color: #444;
+  border-radius: 3px;
+  border: 1px solid #ccc;
 }
 
 .avatar {
@@ -85,4 +78,75 @@ input {
 #back {
   margin: 1em 0;
   display: block;
+}
+
+header {
+  background: #666;
+  color: #f1f1f1;
+  text-align: center;
+  padding: 20px;
+}
+
+header h2 {
+  margin: 0;
+}
+
+footer {
+  text-align: center;
+  color: #999;
+  background: #ddd;
+  border-top: 1px solid #ccc;
+  line-height: 20px;
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+footer p {
+  margin: 0;
+  padding: 10px 0;
+}
+
+#turtle {
+  width: 30px;
+  height: 15px;
+  margin: 0 10px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAPCAYAAADzun+cAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNFRkYwQjgyNTJCMDExRTQ5RDREQTE1NkJCNDkyNDVFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjNFRkYwQjgzNTJCMDExRTQ5RDREQTE1NkJCNDkyNDVFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6REY5NDdDN0Y1MjRDMTFFNDlENERBMTU2QkI0OTI0NUUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6REY5NDdDODA1MjRDMTFFNDlENERBMTU2QkI0OTI0NUUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4LXF0TAAAByElEQVR42qSVSyhEURiAZ8ajPCbsTBaKxNazPBsWNjbKJOUxZKGo2Sk7CitFSYxEs1IMSwtiRZSUR2GYLCjGhg3FDAvfqX9xTTPuHfevr3PuOXfO9597HmN1+1MsBqIOWqEaCuAbnuAY1nyuyIElwbDqiNNgCTp1xlmHYRJ4MCq2/dGXLjPqNDBOO1z0bqS2xXuBvmywG5nxHjRZEo9Z2IIHvkBACalPgQuSYBs88Wbs/qdUhUcG70CqluoKuqAFLiUBbyyxymrGYj680AMOOGL2h5RB6Xu3xck4x6R0BdEz5Zg8NzL7MGW3PI/HEo+alAaR9iOao56raU+FT1hQa58ctYunIcuEVK1nJVJ1EoY0bbuwKUmFVKNWPAkDJqQ+Bu2To6M+sxNCtN3GelkrnoATkdfqnHFtnMEIgm2E89TPqS/q/UiJM2AQ6mEZGiBfNlgNlEMp5IFdElIzOgU/klWENrjmuQRuwJC4Sm4edYyaYQfupX1PrswvkWaqSwdeIKwZxyFSFcUkUURCQb0rc19tCCiTDfEBFXL/BiAChfCm1kz+HMK/FtcVeaS40zQ5jcz4O07fqySWIjPVPUayPMlReydm/AgwAAwvgppRXA53AAAAAElFTkSuQmCC);
+}
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf {
+    *zoom: 1;
+}
+
+.driver-info {
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 15px;
+  line-height: 140%;
+}
+
+#main {
+  min-height: 800px;
+}
+
+.error {
+  margin: 30px 0;
+  color: #f00;
 }

@@ -1,11 +1,51 @@
+<h1>Drivers Championship Standings</h1>
+
 <input type="text" ng-model="nameFilter" placeholder="Search..."/>
-<table>
+
+<table ng-cloak>
 <thead>
-  <tr><th colspan="4">Drivers Championship Standings</th></tr>
+  <tr>
+    <th>
+      <a ng-click="orderByField='position'; reverseSort = !reverseSort">
+        Pos
+        <span ng-show="orderByField == 'position'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='Driver.givenName'; reverseSort = !reverseSort">
+        Driver
+        <span ng-show="orderByField == 'Driver.givenName'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='Constructors[0].name'; reverseSort = !reverseSort">
+        Team
+        <span ng-show="orderByField == 'Constructors[0].name'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+    <th>
+      <a ng-click="orderByField='points'; reverseSort = !reverseSort">
+        Points
+        <span ng-show="orderByField == 'points'">
+          <span ng-show="!reverseSort">&#9650;</span>
+          <span ng-show="reverseSort">&#9660;</span>
+        </span>
+      </a>
+    </th>
+  </tr>
 </thead>
 <tbody>
-  <tr ng-repeat="driver in driversList | filter: searchFilter">
-    <td>{{$index + 1}}</td>
+  <tr ng-repeat="driver in filtered = (driversList | orderBy: orderByField: reverseSort | filter: searchFilter)">
+    <td>{{driver.position}}</td>
     <td>
       <img src="img/flags/{{driver.Driver.nationality}}.png" />
       <a href="#/drivers/{{driver.Driver.driverId}}">
@@ -14,6 +54,10 @@
 	</td>
     <td>{{driver.Constructors[0].name}}</td>
     <td>{{driver.points}}</td>
+  </tr>
+
+  <tr ng-show="filtered.length == 0">
+    <td colspan="4" align="center">Sorry, no results</td>
   </tr>
 </tbody>
 </table>

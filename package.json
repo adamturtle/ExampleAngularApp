@@ -1,9 +1,8 @@
 {
-  "name": "angular-seed",
+  "name": "Turtles-App",
   "private": true,
   "version": "0.0.0",
-  "description": "A starter project for AngularJS",
-  "repository": "https://github.com/angular/angular-seed",
+  "description": "Example AngularJS app",
   "license": "MIT",
   "devDependencies": {
     "karma": "~0.10",
