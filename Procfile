@@ -1,1 +1,1 @@
-web: bower install && node server.js
+web: npm start
