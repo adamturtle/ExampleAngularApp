@@ -7,14 +7,19 @@
 
 <body ng-app="F1FeederApp">
 
-  <ng-include src="'partials/header.html'"></ng-include>
-  <ng-view></ng-view>
-  <ng-include src="'partials/footer.html'"></ng-include>
+   <div class="wrapper">
 
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="js/app.js"></script>
-  <script src="js/services.js"></script>
-  <script src="js/controllers.js"></script>
+     <ng-include src="'partials/header.html'"></ng-include>
+     <ng-view></ng-view>
+
+      <div class="push"></div><!-- /.push -->
+   </div><!-- /.wrapper -->
+   <ng-include src="'partials/footer.html'"></ng-include>
+
+   <script src="bower_components/angular/angular.js"></script>
+   <script src="bower_components/angular-route/angular-route.js"></script>
+   <script src="js/app.js"></script>
+   <script src="js/services.js"></script>
+   <script src="js/controllers.js"></script>
 </body>
 </html>
